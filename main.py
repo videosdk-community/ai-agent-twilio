@@ -37,6 +37,7 @@ VIDEOSDK_AUTH_TOKEN = os.getenv("VIDEOSDK_AUTH_TOKEN")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
 BASE_URL = os.getenv("BASE_URL")
+MEETING_ID = os.getenv("MEETING_ID", "hzm6-7i1y-mfbv")  # Default value if not set
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 validator = RequestValidator(TWILIO_AUTH_TOKEN)
@@ -103,7 +104,7 @@ async def handle_twilio_call(request: Request):
     form_data = await request.form()
     twilio_signature = request.headers.get('X-Twilio-Signature', None)
    
-    room_id = "hzm6-7i1y-mfbv"
+    room_id = MEETING_ID
     agent_token = VIDEOSDK_AUTH_TOKEN # later will be generate via api
     
     # --- Step 2: Instantiate and Connect Agent (in background) ---
