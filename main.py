@@ -108,15 +108,15 @@ async def handle_twilio_call(request: Request):
     
     # --- Step 2: Instantiate and Connect Agent (in background) ---
 
-    if room_id and agent_token:
-        logger.info(f"Step 2: Initializing and connecting agent for room {room_id}")
-        agent = VideoSDKAgent(room_id=room_id, videosdk_token=agent_token, agent_name="SIP DUMB USER")
+    # if room_id and agent_token:
+    #     logger.info(f"Step 2: Initializing and connecting agent for room {room_id}")
+    #     agent = VideoSDKAgent(room_id=room_id, videosdk_token=agent_token, agent_name="SIP DUMB USER")
 
-        # Run the agent's connect method in the background
-        asyncio.create_task(agent.connect())         
-        logger.info(f"Agent connection task created for room {room_id}")
-    else:
-         logger.error("Cannot proceed with agent connection, room_id or agent_token missing.")
+    #     # Run the agent's connect method in the background
+    #     asyncio.create_task(agent.connect())         
+    #     logger.info(f"Agent connection task created for room {room_id}")
+    # else:
+    #      logger.error("Cannot proceed with agent connection, room_id or agent_token missing.")
          
 
     # --- Step 3: Generate TwiML to connect to VideoSDK SIP ---
